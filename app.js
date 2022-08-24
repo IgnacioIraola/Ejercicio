@@ -20,7 +20,9 @@ for (let i = 0; i<=2; i++) {
 //DOM
 let ul = document.createElement("ul");
 let inner = '';
+let precioTotal = 0;
 for (const compra of compras) {
+   precioTotal += compra.precio
     inner+= `<li>${compra.bebida} por un valor de $ ${compra.precio}</li>`;
 }
 ul.innerHTML = inner;
@@ -28,15 +30,6 @@ document.body.appendChild(ul);
 
 
 
-//calculo total
-const precioBebidas = compras.map(dato => dato.precio)
-let precioTotales = precioBebidas.reduce((a,b) =>a+b)
-
-
 let tot = document.createElement("h5");
-let importetotal= '';
-for (const precioTotal of precioTotales) {
-    importetotal+= `<h5> El total es de: $${precioTotal}</h5>`;
-}
-tot.innerHTML = importetotal;
+tot.innerHTML =  "El total de la compra es de de: "+ precioTotal;
 document.body.appendChild(tot);
